@@ -7,7 +7,6 @@ on:
 
 env:
   REGISTRY: docker.io
-  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
 
 jobs:
   build-and-push:
@@ -31,8 +30,8 @@ jobs:
           file: ./backend/Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.DOCKERHUB_USERNAME }}/tutorconnect-backend:latest
-            ${{ env.REGISTRY }}/${{ env.DOCKERHUB_USERNAME }}/tutorconnect-backend:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ secrets.DOCKERHUB_USERNAME }}/tutorconnect-backend:latest
+            ${{ env.REGISTRY }}/${{ secrets.DOCKERHUB_USERNAME }}/tutorconnect-backend:${{ github.sha }}
 
       - name: Build and push frontend image
         uses: docker/build-push-action@v6
@@ -41,5 +40,5 @@ jobs:
           file: ./frontend/Dockerfile
           push: true
           tags: |
-            ${{ env.REGISTRY }}/${{ env.DOCKERHUB_USERNAME }}/tutorconnect-frontend:latest
-            ${{ env.REGISTRY }}/${{ env.DOCKERHUB_USERNAME }}/tutorconnect-frontend:${{ github.sha }}
+            ${{ env.REGISTRY }}/${{ secrets.DOCKERHUB_USERNAME }}/tutorconnect-frontend:latest
+            ${{ env.REGISTRY }}/${{ secrets.DOCKERHUB_USERNAME }}/tutorconnect-frontend:${{ github.sha }}
