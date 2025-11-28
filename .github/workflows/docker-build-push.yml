@@ -7,7 +7,7 @@ on:
 
 env:
   REGISTRY: docker.io
-  DOCKERHUB_USERNAME: ${{ secrets.srinivas30297 }}
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKER_USERNAME }}
 
 jobs:
   build-and-push:
